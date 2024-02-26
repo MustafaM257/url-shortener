@@ -7,7 +7,7 @@
       <p class="my-10 text-lg md:w-2/3 mx-auto text-center">
         Transform your links into short, memorable pathways with Linkique.
       </p>
-      <NuxtLink to="/" class="btn btn-primary">Shorten Now</NuxtLink>
+      <NuxtLink to="/dashboard" class="btn btn-primary">Shorten Now</NuxtLink>
     </div>
   </section>
 </template>

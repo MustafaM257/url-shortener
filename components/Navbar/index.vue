@@ -36,7 +36,13 @@ const links = ref<
           <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/auth" class="btn btn-primary">Sign in</NuxtLink>
+          <NuxtLink
+            :to="{
+              name: 'authentication',
+            }"
+            class="btn btn-primary"
+            >Sign in</NuxtLink
+          >
         </li>
       </ul>
     </nav>
