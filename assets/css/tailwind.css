@@ -15,3 +15,14 @@ body::after{
 .container {
     @apply max-w-5xl mx-auto px-5;
 }
+.bg-blur {
+    @apply bg-black/30 backdrop-blur-md;
+}
+.btn {
+    @apply rounded-full py-2 px-4 ;
+}
+
+.btn-primary {
+    @apply bg-white/80;
+    background: linear-gradient(90deg, rgba(73,108,121,1) 0%, rgba(0,0,0,1) 100%);
+}
