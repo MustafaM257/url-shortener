@@ -4,14 +4,16 @@
     <div class="container">
       <div class="card">
         <div class="flex justify-center">
-          <div class="flex justify-center w-20 items-center">
+          <div
+            class="flex justify-center w-20 h-20 items-center rounded-full border shadow-xl border-white/30"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              class="w-8 h-8"
             >
               <path
                 stroke-linecap="round"
@@ -21,7 +23,7 @@
             </svg>
           </div>
         </div>
-        <button class="btn-primary py-3 w-full rounded-full">
+        <button class="btn-primary py-3 w-full rounded-full mt-5">
           Continue with github
         </button>
         <hr class="border-white/10 my-8" />
