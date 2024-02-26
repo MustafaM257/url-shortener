@@ -4,7 +4,7 @@
 body {
     @apply bg-black text-white/70 relative;
 }
-body::after{
+body::before{
     content : '';
     background: radial-gradient(circle, rgba(73,108,121,1) 0%, rgba(0,0,0,1) 100%);
     width: 100%;
@@ -25,4 +25,16 @@ body::after{
 .btn-primary {
     @apply bg-white/80;
     background: linear-gradient(90deg, rgba(73,108,121,1) 0%, rgba(0,0,0,1) 100%);
+}
+.card {
+    @apply min-w-96 bg-white/5 rounded-lg p-5 border border-white/10 backdrop-blur-md;
+}
+input[type='text'] , input[type='email'] , input[type='password'] {
+    @apply w-full py-2 px-2 bg-transparent border-2 border-white/30 my-2 rounded-lg;
+}
+form label {
+    @apply text-white/70 text-sm my-1 block;
+}
+.form-group {
+    @apply my-5
 }
