@@ -21,7 +21,7 @@ const links = ref<
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 right-0 border-white/20 bg-blur">
+  <div class="fixed top-0 left-0 right-0 border-white/20 bg-blur z-50">
     <nav class="container py-4 flex justify-between">
       <NuxtLink
         class="text-2xl font-bold text-white"

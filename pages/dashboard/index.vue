@@ -7,7 +7,15 @@
       <DashboardLinkForm />
     </section>
     <section class="container mt-10">
-      <DashboardLinkDetails />
+      <DashboardLinkDetails
+        v-for="i in 5"
+        class="mb-5"
+        :link="{
+          id: '1',
+          shortKey: 'shortKey prop',
+          longUrl: 'longUrl prop',
+        }"
+      />
     </section>
   </main>
 </template>

@@ -1,8 +1,17 @@
+<script setup lang="ts">
+defineProps<{
+  link: {
+    id: string;
+    shortKey: string;
+    longUrl: string;
+  };
+}>();
+</script>
 <template>
-  <div class="card">
+  <div class="card flex flex-row-reverse justify-between">
     <div class="link-info">
-      <div class="">MscriW</div>
-      <div>https://www.averylongggggurl</div>
+      <div class="text-neutral-400 font-bold text-2xl">{{ link.shortKey }}</div>
+      <div class="text-sm text-white/50">{{ link.longUrl }}</div>
     </div>
 
     <button
