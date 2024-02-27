@@ -26,6 +26,7 @@ const handleSignup = async () => {
     if (error) {
       errors.value = error.message;
     }
+    errors.value = "Check your email for verification link";
     console.log({ data });
   } catch (error) {
     errors.value = "Something went wrong";
@@ -41,11 +42,13 @@ const handleLoginForm = async () => {
       email: form.email,
       password: form.password,
     });
-
     if (error) {
       errors.value = error.message;
     }
-    console.log({ data });
+    if (data) {
+      errors.value = "";
+      useRouter().push("/dashboard");
+    }
   } catch (error) {
     errors.value = "Something went wrong";
   }
