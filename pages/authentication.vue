@@ -37,6 +37,7 @@ const handleGithubLogin = () => {
         >
           Continue with github
         </button>
+
         <hr class="border-white/10 my-8" />
         <form>
           <div class="form-group">
