@@ -1,10 +1,35 @@
 <script setup lang="ts">
 const supabaseAuth = useSupabaseClient();
 
+const isLoggingIn = ref<Boolean>(false);
+const form = reactive({
+  email: "",
+  password: "",
+});
+const errors = ref("");
+
 const handleGithubLogin = () => {
   supabaseAuth.auth.signInWithOAuth({
     provider: "github",
   });
+};
+const handleLoginForm = async () => {
+  if (!form.email || !form.password) {
+    errors.value = "Please fill in the form";
+  }
+  try {
+    const { data, error } = await supabaseAuth.auth.signInWithPassword({
+      email: form.email,
+      password: form.password,
+    });
+
+    if (error) {
+      errors.value = error.message;
+    }
+    console.log({ data });
+  } catch (error) {
+    errors.value = "Something went wrong";
+  }
 };
 </script>
 <template>
@@ -39,10 +64,11 @@ const handleGithubLogin = () => {
         </button>
 
         <hr class="border-white/10 my-8" />
-        <form>
+        <form @submit.prevent="handleLoginForm">
           <div class="form-group">
             <label for="email">Email</label>
             <input
+              v-model="form.email"
               type="email"
               id="email"
               class="input"
@@ -52,6 +78,7 @@ const handleGithubLogin = () => {
           <div class="form-group">
             <label for="password">Password</label>
             <input
+              v-model="form.password"
               type="password"
               id="password"
               class="input"
@@ -61,6 +88,8 @@ const handleGithubLogin = () => {
           <button class="btn-primary py-3 w-full rounded-full mt-6">
             Login
           </button>
+
+          <p class="text-center text-red-500 mt-4">{{ errors }}</p>
         </form>
       </div>
     </div>
