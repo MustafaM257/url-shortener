@@ -4,8 +4,23 @@ const form = reactive({
   long_url: "",
   key: "",
 });
+const client = useSupabaseClient<any>();
 
-const handleLinkForm = async () => {};
+const createShortKey = (len: number = 6): string => {
+  return (form.key = nanoid(len));
+};
+onMounted(() => {
+  createShortKey();
+});
+
+const handleLinkForm = async () => {
+  try {
+    const { data, error } = client.from("links").insert({
+      long_url: form.long_url,
+      short_key: form.key,
+    });
+  } catch (error) {}
+};
 </script>
 <template>
   <div class="card">
