@@ -25,7 +25,7 @@ body::before{
 .btn-primary {
     background-size: 200% auto;
     transition: all 0.5s ease; /* Corrected: Added 's' for seconds and fixed the space in 'ease' */
-    background-image: linear-gradient(to right, white 0%, rgba(73,108,121,1) 51%, rgba(0,0,0,1) 100%);
+    background-image: linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(73,108,121,1) 51%, rgba(0,0,0,1) 100%);
 }
 
 .btn-primary:hover {
