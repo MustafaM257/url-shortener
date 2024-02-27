@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const supabaseAuth = useSupabaseClient();
 
-const isLoggingIn = ref<Boolean>(false);
+const isLoggingIn = ref<Boolean>(true);
 const form = reactive({
   email: "",
   password: "",
@@ -13,7 +13,26 @@ const handleGithubLogin = () => {
     provider: "github",
   });
 };
+const handleSignup = async () => {
+  if (!form.email || !form.password) {
+    errors.value = "Please fill in the form";
+  }
+  try {
+    const { data, error } = await supabaseAuth.auth.signUp({
+      email: form.email,
+      password: form.password,
+    });
+
+    if (error) {
+      errors.value = error.message;
+    }
+    console.log({ data });
+  } catch (error) {
+    errors.value = "Something went wrong";
+  }
+};
 const handleLoginForm = async () => {
+  if (!isLoggingIn.value) return await handleSignup();
   if (!form.email || !form.password) {
     errors.value = "Please fill in the form";
   }
@@ -85,9 +104,25 @@ const handleLoginForm = async () => {
               placeholder="supersecret"
             />
           </div>
-          <button class="btn-primary py-3 w-full rounded-full mt-6">
-            Login
+          <button
+            class="btn-primary py-3 w-full rounded-full mt-6"
+            type="submit"
+          >
+            <template v-if="isLoggingIn"> Login</template>
+            <template v-else> Signup</template>
           </button>
+          <div class="text-center mt-5">
+            <button
+              type="button"
+              class="text-center"
+              @click="isLoggingIn = !isLoggingIn"
+            >
+              <template v-if="isLoggingIn">
+                Don't have an account ? Signup!
+              </template>
+              <template v-else> Already have an account ? Login!</template>
+            </button>
+          </div>
 
           <p class="text-center text-red-500 mt-4">{{ errors }}</p>
         </form>
