@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
+
+import { type Database } from "~/types/supabase";
 const form = reactive({
   long_url: "",
   key: "",
 });
-const client = useSupabaseClient<any>();
+const client = useSupabaseClient<Database>();
 
 const createShortKey = (len: number = 6): string => {
   return (form.key = nanoid(len));
@@ -15,11 +17,22 @@ onMounted(() => {
 
 const handleLinkForm = async () => {
   try {
-    const { data, error } = client.from("links").insert({
+    const { data, error } = await client.from("links").insert({
       long_url: form.long_url,
-      short_key: form.key,
+      key: form.key,
+      user_id: useSupabaseUser().value?.id,
     });
-  } catch (error) {}
+    if (error) {
+      alert("An error occurred while shortening the link");
+      return;
+    }
+    console.log(data); // This will help you understand the nature of the data
+    alert("Link shortened successfully");
+    createShortKey();
+    form.long_url = "";
+  } catch (error) {
+    console.error(error); // This will help you understand the nature of the error
+  }
 };
 </script>
 <template>

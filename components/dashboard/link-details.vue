@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { type Database } from "~/types/supabase";
+const user = useSupabaseUser();
 defineProps<{
   link: {
     id: string;
@@ -6,6 +8,15 @@ defineProps<{
     longUrl: string;
   };
 }>();
+const client = useSupabaseClient<Database>();
+const { data } = useAsyncData("links", async () => {
+  const { data, error } = await client
+    .from("links")
+    .select("*")
+    .eq("user_id", user.value?.id);
+
+  return data;
+});
 </script>
 <template>
   <div class="card flex flex-row-reverse justify-between">
