@@ -30,7 +30,7 @@ const { data, refresh } = useAsyncData("link", async () => {
   const { data, error } = await client
     .from("links")
     .select("*")
-    .eq("user_id", user.value?.id)
+    .eq("user_id", user.value?.id ?? "")
     .order("created_at", { ascending: false });
 
   return data;
