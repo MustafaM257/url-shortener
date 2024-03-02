@@ -1,38 +1,15 @@
 <script setup lang="ts">
-import { type Database } from "~/types/supabase";
-const user = useSupabaseUser();
 defineProps<{
   link: {
-    id: string;
+    id: number;
     shortKey: string;
     longUrl: string;
   };
 }>();
-const client = useSupabaseClient<Database>();
-
-const { data } = useAsyncData("links", async () => {
-  if (!user.value?.id) {
-    console.error("User ID is undefined.");
-    return [];
-  }
-
-  const { data, error } = await client
-    .from("links")
-    .select("id, shortKey, longUrl")
-    .eq("user_id", user.value.id); // Now we are sure user.value.id is defined
-
-  if (error) {
-    console.error(error);
-    return [];
-  }
-  console.log("Logging the data");
-  console.log(data);
-  return data;
-});
 </script>
 
 <template>
-  <div class="card flex flex-row-reverse justify-between">
+  <div class="card flex flex-row-reverse justify-between my-10">
     <div class="link-info">
       <div class="text-neutral-400 font-bold text-2xl">{{ link.shortKey }}</div>
       <div class="text-sm text-white/50">{{ link.longUrl }}</div>
@@ -56,6 +33,5 @@ const { data } = useAsyncData("links", async () => {
         />
       </svg>
     </button>
-    {{ data }}
   </div>
 </template>

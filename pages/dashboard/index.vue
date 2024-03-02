@@ -8,12 +8,11 @@
     </section>
     <section class="container mt-10">
       <DashboardLinkDetails
-        v-for="i in 5"
-        class="mb-5"
+        v-for="(link, index) in data"
         :link="{
-          id: '1',
-          shortKey: 'shortKey prop',
-          longUrl: 'longUrl prop',
+          shortKey: link.key,
+          longUrl: link.long_url || '',
+          id: link.id,
         }"
       />
     </section>
@@ -23,4 +22,18 @@
 definePageMeta({
   middleware: "auth",
 });
+import { type Database } from "~/types/supabase";
+const user = useSupabaseUser();
+
+const client = useSupabaseClient<Database>();
+const { data } = useAsyncData("link", async () => {
+  const { data, error } = await client
+    .from("links")
+    .select("*")
+    .eq("user_id", user.value.id);
+
+  return data;
+});
+
+console.log(data);
 </script>
