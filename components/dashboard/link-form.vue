@@ -26,7 +26,6 @@ const handleLinkForm = async () => {
       alert("An error occurred while shortening the link");
       return;
     }
-    console.log(data); // This will help you understand the nature of the data
     alert("Link shortened successfully");
     createShortKey();
     form.long_url = "";

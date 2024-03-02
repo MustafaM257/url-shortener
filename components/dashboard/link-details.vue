@@ -9,15 +9,28 @@ defineProps<{
   };
 }>();
 const client = useSupabaseClient<Database>();
+
 const { data } = useAsyncData("links", async () => {
+  if (!user.value?.id) {
+    console.error("User ID is undefined.");
+    return [];
+  }
+
   const { data, error } = await client
     .from("links")
-    .select("*")
-    .eq("user_id", user.value?.id);
+    .select("id, shortKey, longUrl")
+    .eq("user_id", user.value.id); // Now we are sure user.value.id is defined
 
+  if (error) {
+    console.error(error);
+    return [];
+  }
+  console.log("Logging the data");
+  console.log(data);
   return data;
 });
 </script>
+
 <template>
   <div class="card flex flex-row-reverse justify-between">
     <div class="link-info">
@@ -43,5 +56,6 @@ const { data } = useAsyncData("links", async () => {
         />
       </svg>
     </button>
+    {{ data }}
   </div>
 </template>
