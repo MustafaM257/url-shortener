@@ -10,7 +10,7 @@ if (!params.id) {
 }
 const client = useSupabaseClient();
 
-const { data } = await useAsyncData("link", async () => {
+const { data } = useAsyncData("link", async () => {
   const { data, error } = await client
     .from("links")
     .select("*")
@@ -21,6 +21,11 @@ const { data } = await useAsyncData("link", async () => {
   }
   return data;
 });
+
+if (data.value?.long_url) {
+  useRedirect(data.value.long_url);
+}
+// Redirect to the long url
 </script>
 <template>
   <div>
