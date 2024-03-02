@@ -18,6 +18,17 @@ const links = ref<
     label: "Contact",
   },
 ]);
+
+const user = useSupabaseUser();
+const client = useSupabaseClient();
+const handleSignOut = async () => {
+  const { error } = await client.auth.signOut();
+  if (error) {
+    console.error("Error in signing out: ", error);
+    return;
+  }
+  useRouter().push("/");
+};
 </script>
 
 <template>
@@ -35,7 +46,7 @@ const links = ref<
         <li v-for="link in links" :key="link.to">
           <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
         </li>
-        <li>
+        <li v-if="!user">
           <NuxtLink
             :to="{
               name: 'authentication',
@@ -43,6 +54,9 @@ const links = ref<
             class="btn btn-primary"
             >Sign in</NuxtLink
           >
+        </li>
+        <li v-else>
+          <button @click="handleSignOut">Log out</button>
         </li>
       </ul>
     </nav>

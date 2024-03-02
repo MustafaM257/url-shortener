@@ -4,7 +4,7 @@
       <DashboardHeader />
     </section>
     <section class="container mt-10">
-      <DashboardLinkForm />
+      <DashboardLinkForm @created="refresh" />
     </section>
     <section class="container mt-10">
       <DashboardLinkDetails
@@ -26,11 +26,12 @@ import { type Database } from "~/types/supabase";
 const user = useSupabaseUser();
 
 const client = useSupabaseClient<Database>();
-const { data } = useAsyncData("link", async () => {
+const { data, refresh } = useAsyncData("link", async () => {
   const { data, error } = await client
     .from("links")
     .select("*")
-    .eq("user_id", user.value.id);
+    .eq("user_id", user.value?.id)
+    .order("created_at", { ascending: false });
 
   return data;
 });

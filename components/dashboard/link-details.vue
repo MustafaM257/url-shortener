@@ -1,22 +1,42 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   link: {
     id: number;
     shortKey: string;
     longUrl: string;
   };
 }>();
+const config = useRuntimeConfig();
+
+const handleCopy = () => {
+  navigator.clipboard
+    .writeText(`${config.public.appUrl}/${props.link.shortKey}`)
+    .then(() => {
+      alert("Copied to clipboard");
+    })
+    .catch((err) => {
+      console.error("Error in copying text: ", err);
+      alert("Failed to copy to clipboard");
+    });
+};
 </script>
 
 <template>
   <div class="card flex flex-row-reverse justify-between my-10">
     <div class="link-info">
       <div class="text-neutral-400 font-bold text-2xl">{{ link.shortKey }}</div>
-      <div class="text-sm text-white/50">{{ link.longUrl }}</div>
+      <div class="text-sm text-white/50">
+        {{
+          link.longUrl.length > 20
+            ? link.longUrl.slice(0, 20) + "..."
+            : link.longUrl
+        }}
+      </div>
     </div>
 
     <button
       class="btn-primary w-12 h-12 grid place-content-center rounded-full"
+      @click="handleCopy"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

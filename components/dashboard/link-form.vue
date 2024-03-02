@@ -14,6 +14,7 @@ const createShortKey = (len: number = 6): string => {
 onMounted(() => {
   createShortKey();
 });
+const emit = defineEmits(["created"]);
 
 const handleLinkForm = async () => {
   try {
@@ -29,6 +30,7 @@ const handleLinkForm = async () => {
     alert("Link shortened successfully");
     createShortKey();
     form.long_url = "";
+    emit("created", 1);
   } catch (error) {
     console.error(error); // This will help you understand the nature of the error
   }
