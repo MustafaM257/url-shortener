@@ -34,9 +34,6 @@ onMounted(() => {
 <template>
   <div>
     <h1>Redirecting...</h1>
-    <div class="pt-[200px]">
-      {{ params }}
-      {{ data }}
-    </div>
+    <div class="pt-[200px]">Redirecting..</div>
   </div>
 </template>

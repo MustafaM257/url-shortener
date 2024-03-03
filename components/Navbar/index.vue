@@ -9,14 +9,6 @@ const links = ref<
     to: "/",
     label: "Home",
   },
-  {
-    to: "/about",
-    label: "About",
-  },
-  {
-    to: "/contact",
-    label: "Contact",
-  },
 ]);
 
 const user = useSupabaseUser();
