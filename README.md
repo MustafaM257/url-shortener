@@ -1,75 +1,32 @@
-# Nuxt 3 Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## LINKIQUE linkique.vercel.app
+Installation
+To install the packages
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
+To create the needed environment variables
 
-# yarn
-yarn install
+touch .env
+SUPABASE_KEY=<>
+SUPABASE_URL=<>
+APP_URL=<>
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
 
-# yarn
-yarn dev
+Don't forget to setup your supabase database too, types are present in types/supabase.ts for reference
 
-# bun
-bun run dev
-```
+Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Production
+Please make sure to update tests as appropriate.
 
-Build the application for production:
+License
+MIT License
 
-```bash
-# npm
-npm run build
+Copyright (c) 2019 Rami Atrouni
 
-# pnpm
-pnpm run build
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-# yarn
-yarn build
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
