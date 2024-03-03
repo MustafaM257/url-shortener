@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Database } from "~/types/supabase";
+import geoip from "geoip-lite";
 
 const params = useRoute().params;
 const client = useSupabaseClient<Database>();
@@ -22,7 +23,15 @@ async function fetchDataAndRedirect() {
 
   if (error) throw error;
 
-  if (data.long_url) useRedirect(data.long_url, 302);
+  if (data.long_url) {
+    const useragent = useAgent();
+    console.log({ useragent });
+    if (useragent && useragent.ip) {
+      const geo = geoip.lookup(useragent.ip);
+      console.log({ geo });
+    }
+    useRedirect(data.long_url, 302);
+  }
 }
 
 onMounted(() => {
