@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { type Database } from "~/types/supabase";
+
 const params = useRoute().params;
-const client = useSupabaseClient();
+const client = useSupabaseClient<Database>();
 const data = ref(null);
 
 // Wrap async operations in a function
@@ -12,7 +14,7 @@ async function fetchDataAndRedirect() {
     });
   }
 
-  const { data: linkData, error } = await client
+  const { data, error } = await client
     .from("links")
     .select("*")
     .eq("key", params.id)
@@ -20,11 +22,7 @@ async function fetchDataAndRedirect() {
 
   if (error) throw error;
 
-  data.value = linkData;
-
-  if (linkData?.long_url) {
-    useRedirect(linkData.long_url);
-  }
+  if (data.long_url) useRedirect(data.long_url, 302);
 }
 
 onMounted(() => {
