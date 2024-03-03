@@ -1,3 +1,4 @@
+import { useNuxtApp } from "#app";
 
 export default function useRedirect(url: string, code: number = 302): Promise<void> | void {
     // Validate the URL
