@@ -1,33 +1,37 @@
+# Linkique
 
-## LINKIQUE linkique.vercel.app
-Installation
-To install the packages
+Welcome to Linkique, a simple project designed to streamline your workflow. This project leverages the power of Supabase for backend services, providing a robust solution for your needs.
 
-pnpm install
-To create the needed environment variables
+## Getting Started
 
-touch .env
-SUPABASE_KEY=<>
-SUPABASE_URL=<>
-APP_URL=<>
+To get started with Linkique, you'll need to set up your environment and configure the project to connect to Supabase.
 
-pnpm run dev
+### Prerequisites
 
-Don't forget to setup your supabase database too, types are present in types/supabase.ts for reference
+Before you begin, make sure you have:
 
-Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+- Node.js installed on your machine.
+- An account on Supabase.io.
 
-Please make sure to update tests as appropriate.
+### Setup
 
-License
-MIT License
+1. **Clone the Repository**
 
-Copyright (c) 2024 Mostafa Al Mohammad
+   Begin by cloning this repository to your local machine:
+
+   ```bash
+   clone the repo 
+   cd Linkique
+
+   
+SUPABASE_KEY=<Your-Supabase-Key>
+SUPABASE_URL=<Your-Supabase-URL>
+APP_URL=<Your-Application-URL>
 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+then 
+pnpm install && pnpm run dev
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This README is a starting point and can be customized further to fit the specific needs of your project. Be sure to replace placeholder URLs and text with your actual project information and details.
