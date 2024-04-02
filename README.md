@@ -33,8 +33,29 @@ SUPABASE_URL=<Your-Supabase-URL>
 APP_URL=<Your-Application-URL>
 
 
-then 
-pnpm install && pnpm run dev
+### This project uses pnpm
+
+This project is managed with pnpm, a fast, disk-space efficient package manager for JavaScript projects.
+
+To ensure that the project runs smoothly without any issues, please follow these steps:
+
+1. **Install pnpm:** If you haven't already installed pnpm globally on your system, you can do so by running the following command:
+
+   ```bash
+   npm install -g pnpm
+   ```
+
+2. **Install Dependencies:** Navigate to the root directory of the project in your terminal and run the following command to install project dependencies using pnpm:
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Run the Project:** Once all dependencies are installed, you can start the development server by running:
+   ```bash
+   pnpm run dev
+   ```
+
 
 
 
